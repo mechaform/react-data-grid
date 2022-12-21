@@ -1,5 +1,5 @@
 {
-  "name": "react-data-grid",
+  "name": "@mechaform/react-data-grid",
   "version": "7.0.0-beta.13",
   "license": "MIT",
   "description": "Feature-rich and customizable data grid React component",
@@ -7,8 +7,8 @@
     "react",
     "data grid"
   ],
-  "repository": "github:adazzle/react-data-grid",
-  "bugs": "https://github.com/adazzle/react-data-grid/issues",
+  "repository": "github:mechaform/react-data-grid",
+  "bugs": "https://github.com/mechaform/react-data-grid/issues",
   "type": "module",
   "exports": {
     ".": {
