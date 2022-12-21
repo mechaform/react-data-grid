@@ -706,6 +706,8 @@ export function DataGrid<R, SR = unknown, K extends Key = Key>(props: DataGridPr
     }
 
     if (isCellEditable(selectedPosition) && isDefaultCellInput(event, onCellPaste != null)) {
+      const column = columns[selectedPosition.idx];
+      column.editorOptions?.onEditorOpen?.(row);
       setSelectedPosition(({ idx, rowIdx }) => ({
         idx,
         rowIdx,
@@ -835,7 +837,9 @@ export function DataGrid<R, SR = unknown, K extends Key = Key>(props: DataGridPr
     const samePosition = isSamePosition(selectedPosition, position);
 
     if (options?.enableEditor && isCellEditable(position)) {
-      const row = rows[position.rowIdx];
+      const row = rows[position.rowIdx] as R;
+      const column = columns[position.idx];
+      column.editorOptions?.onEditorOpen?.(row);
       setSelectedPosition({ ...position, mode: 'EDIT', row, originalRow: row });
     } else if (samePosition) {
       // Avoid re-renders if the selected cell state is the same

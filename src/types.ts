@@ -75,6 +75,9 @@ export interface Column<TRow, TSummaryRow = unknown> {
      * @default true
      */
     readonly closeOnExternalRowChange?: Maybe<boolean>;
+
+    readonly onEditorOpen?: Maybe<(row: TRow) => void>;
+    readonly onEditorClose?: Maybe<(row: TRow) => void>;
   }>;
 }
 

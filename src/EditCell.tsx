@@ -166,6 +166,7 @@ export default function EditCell<R, SR>({
   }
 
   function onClose(commitChanges = false, shouldFocusCell = true) {
+    column.editorOptions?.onEditorClose?.(row);
     if (commitChanges) {
       onRowChange(row, true, shouldFocusCell);
     } else {
