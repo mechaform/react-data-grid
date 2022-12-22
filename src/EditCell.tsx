@@ -80,6 +80,9 @@ export default function EditCell<R, SR>({
       event.stopPropagation();
       onClose(true);
     } else {
+      if (event.key === 'Tab') {
+        onClose(true);
+      }
       const onNavigation = column.editorOptions?.onNavigation ?? onEditorNavigation;
       if (!onNavigation(event)) {
         event.stopPropagation();
@@ -89,7 +92,7 @@ export default function EditCell<R, SR>({
 
   function onClose(commitChanges?: boolean) {
     if (column.editorOptions?.onEditorClose) {
-      column.editorOptions?.onEditorClose(row);
+      column.editorOptions.onEditorClose(row);
     }
     if (commitChanges) {
       onRowChange(row, true);
