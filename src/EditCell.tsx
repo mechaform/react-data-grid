@@ -91,9 +91,7 @@ export default function EditCell<R, SR>({
   }
 
   function onClose(commitChanges?: boolean) {
-    if (column.editorOptions?.onEditorClose) {
-      column.editorOptions.onEditorClose(row);
-    }
+    column.editorOptions?.onEditorClose?.(row);
     if (commitChanges) {
       onRowChange(row, true);
     } else {
