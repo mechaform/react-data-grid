@@ -48,6 +48,7 @@ export interface Column<TRow, TSummaryRow = unknown> {
     readonly onCellKeyDown?: Maybe<(event: React.KeyboardEvent<HTMLDivElement>) => void>;
     /** Control the default cell navigation behavior while the editor is open */
     readonly onNavigation?: Maybe<(event: React.KeyboardEvent<HTMLDivElement>) => boolean>;
+    readonly onEditorOpen?: Maybe<(row: TRow) => void>;
     readonly onEditorClose?: Maybe<(row: TRow) => void>;
   }>;
   /** Header renderer for each header cell */

@@ -683,6 +683,7 @@ function DataGrid<R, SR, K extends Key>(
     if (event.isDefaultPrevented()) return;
 
     if (isCellEditable(selectedPosition) && isDefaultCellInput(event)) {
+      column.editorOptions?.onEditorOpen?.(row);
       setSelectedPosition(({ idx, rowIdx }) => ({
         idx,
         rowIdx,
@@ -724,7 +725,9 @@ function DataGrid<R, SR, K extends Key>(
     commitEditorChanges();
 
     if (enableEditor && isCellEditable(position)) {
+      const column = columns[position.idx];
       const row = rows[position.rowIdx] as R;
+      column.editorOptions?.onEditorOpen?.(row);
       setSelectedPosition({ ...position, mode: 'EDIT', row, originalRow: row });
     } else if (isSamePosition(selectedPosition, position)) {
       // Avoid re-renders if the selected cell state is the same
